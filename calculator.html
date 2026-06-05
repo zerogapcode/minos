@@ -409,9 +409,9 @@
   <section class="section" id="calculator" style="padding-top: calc(var(--section-padding) + 4rem); min-height: 100vh;">
     <div class="section-inner">
       <div class="section-header reveal">
-        <span class="section-label">Instant Quote</span>
-        <h2 class="section-title">3D Print Calculator</h2>
-        <p class="section-desc">Upload your .stl file for an instant automated estimate based on volume, density, and quantity.</p>
+        <span class="section-label" data-i18n="calc.label">Instant Quote</span>
+        <h2 class="section-title" data-i18n="calc.title">3D Print Calculator</h2>
+        <p class="section-desc" data-i18n="calc.desc">Upload your .stl file for an instant automated estimate based on volume, density, and quantity.</p>
       </div>
 
       <div class="calc-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: var(--bg-glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--border-glass); border-radius: 24px; padding: 2.5rem; box-shadow: var(--shadow-md);">
@@ -423,15 +423,15 @@
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color: var(--accent); margin-bottom: 1rem;">
                 <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
               </svg>
-              <h3 style="font-family: var(--font-display); margin-bottom: 0.5rem;">Drag & Drop .STL</h3>
-              <p style="color: var(--text-muted); font-size: 0.9rem;">or click to browse files</p>
+              <h3 style="font-family: var(--font-display); margin-bottom: 0.5rem;" data-i18n="calc.dropzone.title">Drag & Drop .STL</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="calc.dropzone.desc">or click to browse files</p>
             </div>
             <div id="viewer-container" style="position: absolute; inset: 0; opacity: 0; pointer-events: none;"></div>
           </div>
           <input type="file" id="stl-input" accept=".stl" style="display: none;">
           <div id="model-stats" style="display: none; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); padding: 0 0.5rem;">
-            <span>Volume: <span id="stat-vol" style="color: var(--text-primary); font-weight: 600;">0</span> cm³</span>
-            <span>Dimensions: <span id="stat-dim" style="color: var(--text-primary); font-weight: 600;">0 x 0 x 0</span> mm</span>
+            <span><span data-i18n="calc.stats.vol">Volume:</span> <span id="stat-vol" style="color: var(--text-primary); font-weight: 600;">0</span> cm³</span>
+            <span><span data-i18n="calc.stats.dim">Dimensions:</span> <span id="stat-dim" style="color: var(--text-primary); font-weight: 600;">0 x 0 x 0</span> mm</span>
           </div>
         </div>
 
@@ -439,35 +439,35 @@
         <div class="calc-controls-col" style="display: flex; flex-direction: column; gap: 1.5rem; justify-content: center;">
           
           <div class="form-group">
-            <label for="calc-density">Infill Density</label>
+            <label for="calc-density" data-i18n="calc.density">Infill Density</label>
             <select id="calc-density" style="padding: 0.85rem 1rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-card); color: var(--text-primary); font-family: var(--font-body); font-size: 0.95rem; outline: none; width: 100%;">
-              <option value="0.15">Low (15%) - Draft/Display</option>
-              <option value="0.50" selected>Medium (50%) - Standard/Functional</option>
-              <option value="1.00">Solid (100%) - Maximum Strength</option>
+              <option value="0.15" data-i18n="calc.density.low">Low (15%) - Draft/Display</option>
+              <option value="0.50" selected data-i18n="calc.density.med">Medium (50%) - Standard/Functional</option>
+              <option value="1.00" data-i18n="calc.density.high">Solid (100%) - Maximum Strength</option>
             </select>
           </div>
 
           <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
             <div>
-              <label for="calc-qty">Quantity</label>
+              <label for="calc-qty" data-i18n="calc.qty">Quantity</label>
               <input type="number" id="calc-qty" value="1" min="1" style="width: 100%;">
-              <div style="font-size: 0.75rem; color: var(--accent); margin-top: 0.3rem;">20% off for 10+ items</div>
+              <div style="font-size: 0.75rem; color: var(--accent); margin-top: 0.3rem;" data-i18n="calc.qty.discount">20% off for 10+ items</div>
             </div>
             <div>
-              <label for="calc-colors">Extra Colors</label>
+              <label for="calc-colors" data-i18n="calc.colors">Extra Colors</label>
               <input type="number" id="calc-colors" value="0" min="0" style="width: 100%;">
-              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;">+2% per extra color</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;" data-i18n="calc.colors.desc">+2% per extra color</div>
             </div>
           </div>
 
           <div style="margin-top: 1rem; padding: 1.5rem; background: var(--accent-soft); border-radius: 16px; border: 1px solid var(--border-color);">
-            <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Estimated Cost</div>
+            <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;" data-i18n="calc.estimated">Estimated Cost</div>
             <div style="font-family: var(--font-display); font-size: 3rem; font-weight: 800; color: var(--text-primary); line-height: 1; margin-bottom: 0.5rem;">$<span id="calc-price">0.00</span></div>
-            <div id="bulk-badge" style="display: none; font-size: 0.8rem; background: var(--gradient-accent); color: white; padding: 0.2rem 0.6rem; border-radius: 100px; width: fit-content; font-weight: 600;">Bulk Discount Applied</div>
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; line-height: 1.5;">* Estimate based on standard filament. Final price may vary depending on material choice, support structures, and post-processing.</p>
+            <div id="bulk-badge" style="display: none; font-size: 0.8rem; background: var(--gradient-accent); color: white; padding: 0.2rem 0.6rem; border-radius: 100px; width: fit-content; font-weight: 600;" data-i18n="calc.bulkApplied">Bulk Discount Applied</div>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; line-height: 1.5;" data-i18n="calc.disclaimer">* Estimate based on standard filament. Final price may vary depending on material choice, support structures, and post-processing.</p>
           </div>
 
-          <button class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 0.5rem;">Proceed to Order</button>
+          <button class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 0.5rem;" data-i18n="calc.proceed">Proceed to Order</button>
 
         </div>
       </div>
@@ -518,7 +518,26 @@
         'contact.label':'Get In Touch','contact.title':"Let's Build Something Amazing",'contact.desc':"Ready to start your next project? Reach out and let's discuss how we can help.",
         'contact.phone':'Phone','contact.location':'Location','contact.address':'Newark, Delaware — United States','contact.followUs':'Follow Us',
         'form.name':'Full Name','form.email':'Email Address','form.subject':'Subject','form.message':'Message','form.submit':'Send Message',
-        'footer.rights':'All rights reserved.'
+        'footer.rights':'All rights reserved.',
+        'calc.label': 'Instant Quote',
+        'calc.title': '3D Print Calculator',
+        'calc.desc': 'Upload your .stl file for an instant automated estimate based on volume, density, and quantity.',
+        'calc.dropzone.title': 'Drag & Drop .STL',
+        'calc.dropzone.desc': 'or click to browse files',
+        'calc.stats.vol': 'Volume:',
+        'calc.stats.dim': 'Dimensions:',
+        'calc.density': 'Infill Density',
+        'calc.density.low': 'Low (15%) - Draft/Display',
+        'calc.density.med': 'Medium (50%) - Standard/Functional',
+        'calc.density.high': 'Solid (100%) - Maximum Strength',
+        'calc.qty': 'Quantity',
+        'calc.qty.discount': '20% off for 10+ items',
+        'calc.colors': 'Extra Colors',
+        'calc.colors.desc': '+2% per extra color',
+        'calc.estimated': 'Estimated Cost',
+        'calc.bulkApplied': 'Bulk Discount Applied',
+        'calc.disclaimer': '* Estimate based on standard filament. Final price may vary depending on material choice, support structures, and post-processing.',
+        'calc.proceed': 'Proceed to Order'
       },
       es: {
         'nav.services':'Servicios','nav.about':'Nosotros','nav.process':'Proceso','nav.gallery':'Galería','nav.materials':'Materiales','nav.contact':'Contacto',
@@ -547,7 +566,26 @@
         'contact.label':'Contáctanos','contact.title':'Construyamos Algo Increíble','contact.desc':'¿Listo para comenzar tu próximo proyecto? Contáctanos y hablemos de cómo podemos ayudarte.',
         'contact.phone':'Teléfono','contact.location':'Ubicación','contact.address':'Newark, Delaware — United States','contact.followUs':'Síguenos',
         'form.name':'Nombre Completo','form.email':'Correo Electrónico','form.subject':'Asunto','form.message':'Mensaje','form.submit':'Enviar Mensaje',
-        'footer.rights':'Todos los derechos reservados.'
+        'footer.rights':'Todos los derechos reservados.',
+        'calc.label': 'Cotización Instantánea',
+        'calc.title': 'Calculadora de Impresión 3D',
+        'calc.desc': 'Sube tu archivo .stl para obtener un estimado automático al instante según el volumen, la densidad y la cantidad.',
+        'calc.dropzone.title': 'Arrastra y Suelta tu .STL',
+        'calc.dropzone.desc': 'o haz clic para buscar archivos',
+        'calc.stats.vol': 'Volumen:',
+        'calc.stats.dim': 'Dimensiones:',
+        'calc.density': 'Densidad de Relleno',
+        'calc.density.low': 'Bajo (15%) - Borrador/Exhibición',
+        'calc.density.med': 'Medio (50%) - Estándar/Funcional',
+        'calc.density.high': 'Sólido (100%) - Máxima Resistencia',
+        'calc.qty': 'Cantidad',
+        'calc.qty.discount': '20% desc. en 10+ artículos',
+        'calc.colors': 'Colores Extra',
+        'calc.colors.desc': '+2% por color extra',
+        'calc.estimated': 'Costo Estimado',
+        'calc.bulkApplied': 'Descuento por Volumen',
+        'calc.disclaimer': '* Estimación basada en filamento estándar. El precio final puede variar según la elección del material, estructuras de soporte y post-procesamiento.',
+        'calc.proceed': 'Proceder a Ordenar'
       }
     };
 
@@ -994,13 +1032,16 @@
     let previousDragX = 0;
 
     let isMarqueeHovered = false;
-    marqueeContainer.addEventListener('mouseenter', () => isMarqueeHovered = true);
-    marqueeContainer.addEventListener('mouseleave', () => {
-      isMarqueeHovered = false;
-      if (typeof stopMarqueeDrag === 'function') stopMarqueeDrag();
-    });
+    if (marqueeContainer) {
+      marqueeContainer.addEventListener('mouseenter', () => isMarqueeHovered = true);
+      marqueeContainer.addEventListener('mouseleave', () => {
+        isMarqueeHovered = false;
+        if (typeof stopMarqueeDrag === 'function') stopMarqueeDrag();
+      });
+    }
 
     function updateGalleryDepth() {
+      if (!marqueeEl) return;
       if (isDraggingMarquee) {
         marqueeVelocity = (currentDragX - previousDragX) * 1.5;
         marqueeX += marqueeVelocity;
@@ -1067,39 +1108,41 @@
     /* =============================================
        MARQUEE DRAG LOGIC
     ============================================= */
-    marqueeContainer.addEventListener('mousedown', (e) => {
-      isDraggingMarquee = true;
-      startDragX = e.pageX;
-      currentDragX = e.pageX;
-      previousDragX = e.pageX;
-      draggedDistance = 0;
-    });
+    if (marqueeContainer) {
+      marqueeContainer.addEventListener('mousedown', (e) => {
+        isDraggingMarquee = true;
+        startDragX = e.pageX;
+        currentDragX = e.pageX;
+        previousDragX = e.pageX;
+        draggedDistance = 0;
+      });
 
-    marqueeContainer.addEventListener('mousemove', (e) => {
-      if (!isDraggingMarquee) return;
-      e.preventDefault();
-      currentDragX = e.pageX;
-      draggedDistance += Math.abs(currentDragX - previousDragX);
-    });
+      marqueeContainer.addEventListener('mousemove', (e) => {
+        if (!isDraggingMarquee) return;
+        e.preventDefault();
+        currentDragX = e.pageX;
+        draggedDistance += Math.abs(currentDragX - previousDragX);
+      });
 
-    const stopMarqueeDrag = () => { isDraggingMarquee = false; };
-    marqueeContainer.addEventListener('mouseup', stopMarqueeDrag);
+      const stopMarqueeDrag = () => { isDraggingMarquee = false; };
+      marqueeContainer.addEventListener('mouseup', stopMarqueeDrag);
 
-    marqueeContainer.addEventListener('touchstart', (e) => {
-      isDraggingMarquee = true;
-      startDragX = e.touches[0].pageX;
-      currentDragX = e.touches[0].pageX;
-      previousDragX = e.touches[0].pageX;
-      draggedDistance = 0;
-    });
+      marqueeContainer.addEventListener('touchstart', (e) => {
+        isDraggingMarquee = true;
+        startDragX = e.touches[0].pageX;
+        currentDragX = e.touches[0].pageX;
+        previousDragX = e.touches[0].pageX;
+        draggedDistance = 0;
+      });
 
-    marqueeContainer.addEventListener('touchmove', (e) => {
-      if (!isDraggingMarquee) return;
-      currentDragX = e.touches[0].pageX;
-      draggedDistance += Math.abs(currentDragX - previousDragX);
-    });
+      marqueeContainer.addEventListener('touchmove', (e) => {
+        if (!isDraggingMarquee) return;
+        currentDragX = e.touches[0].pageX;
+        draggedDistance += Math.abs(currentDragX - previousDragX);
+      });
 
-    marqueeContainer.addEventListener('touchend', stopMarqueeDrag);
+      marqueeContainer.addEventListener('touchend', stopMarqueeDrag);
+    }
 
     /* =============================================
        LIGHTBOX LOGIC
