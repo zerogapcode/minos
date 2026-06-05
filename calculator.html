@@ -1248,8 +1248,7 @@
           bulkBadge.style.display = 'none';
         }
 
-        // Add a minimum floor price per piece (e.g., $1.00) if needed, but skipped for raw calculation
-        priceDisplay.textContent = Math.max(totalPrice, 1.00).toFixed(2);
+        priceDisplay.textContent = totalPrice.toFixed(2);
       }
 
       function loadSTL(buffer) {
