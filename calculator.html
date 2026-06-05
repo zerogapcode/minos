@@ -418,15 +418,17 @@
         
         <!-- Viewer Column -->
         <div class="calc-viewer-col" style="display: flex; flex-direction: column; gap: 1rem;">
-          <div id="stl-dropzone" style="border: 2px dashed var(--border-color); border-radius: 16px; padding: 2rem; text-align: center; cursor: pointer; transition: all var(--transition-base); background: var(--bg-card); position: relative; overflow: hidden; min-height: 400px; display: flex; align-items: center; justify-content: center;">
-            <div id="upload-prompt" style="pointer-events: none;">
+          <div id="stl-dropzone" style="border: 2px dashed var(--border-color); border-radius: 16px; padding: 2rem; text-align: center; transition: all var(--transition-base); background: var(--bg-card); position: relative; overflow: hidden; min-height: 400px; display: flex; align-items: center; justify-content: center;">
+            <div id="upload-prompt" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color: var(--accent); margin-bottom: 1rem;">
                 <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
               </svg>
               <h3 style="font-family: var(--font-display); margin-bottom: 0.5rem;" data-i18n="calc.dropzone.title">Drag & Drop .STL</h3>
               <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="calc.dropzone.desc">or click to browse files</p>
+              <button id="browse-btn" class="btn btn-secondary" style="margin-top: 1.5rem; position: relative; z-index: 10;" data-i18n="calc.browseBtn">Browse Files</button>
             </div>
             <div id="viewer-container" style="position: absolute; inset: 0; opacity: 0; pointer-events: none;"></div>
+            <button id="replace-btn" class="btn btn-secondary" style="position: absolute; top: 1rem; right: 1rem; z-index: 10; display: none; padding: 0.5rem 1rem; font-size: 0.8rem;" data-i18n="calc.replaceBtn">Upload New File</button>
           </div>
           <input type="file" id="stl-input" accept=".stl" style="display: none;">
           <div id="model-stats" style="display: none; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); padding: 0 0.5rem;">
@@ -537,7 +539,9 @@
         'calc.estimated': 'Estimated Cost',
         'calc.bulkApplied': 'Bulk Discount Applied',
         'calc.disclaimer': '* Estimate based on standard filament. Final price may vary depending on material choice, support structures, and post-processing.',
-        'calc.proceed': 'Proceed to Order'
+        'calc.proceed': 'Proceed to Order',
+        'calc.browseBtn': 'Browse Files',
+        'calc.replaceBtn': 'Upload New File'
       },
       es: {
         'nav.services':'Servicios','nav.about':'Nosotros','nav.process':'Proceso','nav.gallery':'Galería','nav.materials':'Materiales','nav.contact':'Contacto',
@@ -585,7 +589,9 @@
         'calc.estimated': 'Costo Estimado',
         'calc.bulkApplied': 'Descuento por Volumen',
         'calc.disclaimer': '* Estimación basada en filamento estándar. El precio final puede variar según la elección del material, estructuras de soporte y post-procesamiento.',
-        'calc.proceed': 'Proceder a Ordenar'
+        'calc.proceed': 'Proceder a Ordenar',
+        'calc.browseBtn': 'Buscar Archivos',
+        'calc.replaceBtn': 'Subir Nuevo Archivo'
       }
     };
 
@@ -1242,7 +1248,11 @@
       });
 
       // Handle interactions
-      dropzone.addEventListener('click', () => fileInput.click());
+      const browseBtn = document.getElementById('browse-btn');
+      const replaceBtn = document.getElementById('replace-btn');
+      browseBtn.addEventListener('click', () => fileInput.click());
+      replaceBtn.addEventListener('click', () => fileInput.click());
+
       dropzone.addEventListener('dragover', (e) => {
         e.preventDefault();
         dropzone.style.borderColor = 'var(--accent)';
@@ -1342,6 +1352,7 @@
           uploadPrompt.style.opacity = '0';
           viewerContainer.style.opacity = '1';
           viewerContainer.style.pointerEvents = 'all';
+          replaceBtn.style.display = 'block';
 
           updatePrice();
 
