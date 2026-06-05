@@ -1281,6 +1281,9 @@
           unitPrice = unitPrice * (1 + (extraColors * 0.02));
         }
 
+        // Minimum price per piece is $3.99
+        unitPrice = Math.max(unitPrice, 3.99);
+
         let totalPrice = unitPrice * qty;
 
         // Bulk discount: >10 units = 20% off
