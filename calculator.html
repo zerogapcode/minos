@@ -1318,9 +1318,11 @@
         reader.readAsArrayBuffer(file);
       }
       
-      inputDensity.addEventListener('change', updatePrice);
-      inputQty.addEventListener('input', updatePrice);
-      inputColors.addEventListener('change', updatePrice);
+      ['input', 'change'].forEach(evt => {
+        inputDensity.addEventListener(evt, updatePrice);
+        inputQty.addEventListener(evt, updatePrice);
+        inputColors.addEventListener(evt, updatePrice);
+      });
     })();
   </script>
 </body>
