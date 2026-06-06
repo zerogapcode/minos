@@ -1318,11 +1318,11 @@
         const qty = parseInt(inputQty.value) || 1;
         const extraColors = parseInt(inputColors.value) || 0;
 
-        const baseMaterialCostPerCm3 = 0.025; // ~$20/kg for typical 1.25g/cm3 PLA
+        const baseMaterialCostPerCm3 = 0.03125; // ~$25/kg for typical 1.25g/cm3 PLA
         let materialCost = currentVolumeCm3 * density * baseMaterialCostPerCm3;
 
-        // Margins: 35% profit + 5% wear = +40%
-        let unitPrice = materialCost * 1.40;
+        // Margins: 40% profit + 5% wear = +45%
+        let unitPrice = materialCost * 1.45;
 
         // Extra Colors: +2% per color
         if (extraColors > 0) {
